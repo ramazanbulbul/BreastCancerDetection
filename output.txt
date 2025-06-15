@@ -1,0 +1,251 @@
+Kütüphaneler yüklendi ✓
+Path to dataset files: /kaggle/input/cbis-ddsm-breast-cancer-image-dataset
+Orijinal train set sınıf dağılımı:
+pathology
+MALIGNANT                  544
+BENIGN                     528
+BENIGN_WITHOUT_CALLBACK    474
+Name: count, dtype: int64
+
+Orijinal test set sınıf dağılımı:
+pathology
+BENIGN                     130
+MALIGNANT                  129
+BENIGN_WITHOUT_CALLBACK     67
+Name: count, dtype: int64
+Train/Validation split sonrası:
+Train pathology dağılımı:
+pathology
+MALIGNANT                  435
+BENIGN                     422
+BENIGN_WITHOUT_CALLBACK    379
+Name: count, dtype: int64
+Validation pathology dağılımı:
+pathology
+MALIGNANT                  109
+BENIGN                     106
+BENIGN_WITHOUT_CALLBACK     95
+Name: count, dtype: int64
+train kopyalanan dosyalar: {'benign': 801, 'malignant': 435}
+Dosya bulunamadı: /kaggle/input/cbis-ddsm-breast-cancer-image-dataset/jpeg/Calc-Training_P_01563_RIGHT_MLO_2/1.3.6.1.4.1.9590.100.1.2.30641077412269695712292719894178697599/1.3.6.1.4.1.9590.100.1.2.348822970413183698610798947061334416506/000001.dcm
+
+validation kopyalanan dosyalar: {'benign': 200, 'malignant': 109}
+test kopyalanan dosyalar: {'benign': 197, 'malignant': 129}
+Veri seti başarıyla klasör yapısına kopyalandı.
+Benign: 368, Malignant: 274
+Class weights: {0: 0.8722826086956522, 1: 1.1715328467153285}
+Found 642 images belonging to 2 classes.
+Found 259 images belonging to 2 classes.
+Found 291 images belonging to 2 classes.
+Sınıf indeksleri: {'benign': 0, 'malignant': 1}
+Train samples: 642
+Validation samples: 259
+Test samples: 291
+
+MobileNetV2_Transfer Model Özeti:
+Model: "sequential_1"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ mobilenetv2_1.00_224 (Functional)    │ (None, 7, 7, 1280)          │       2,257,984 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ global_average_pooling2d_1           │ (None, 1280)                │               0 │
+│ (GlobalAveragePooling2D)             │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_2 (Dropout)                  │ (None, 1280)                │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_2 (Dense)                      │ (None, 256)                 │         327,936 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_1                │ (None, 256)                 │           1,024 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ leaky_re_lu_1 (LeakyReLU)            │ (None, 256)                 │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_3 (Dropout)                  │ (None, 256)                 │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_3 (Dense)                      │ (None, 1)                   │             257 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 2,587,201 (9.87 MB)
+ Trainable params: 1,534,785 (5.85 MB)
+ Non-trainable params: 1,052,416 (4.01 MB)
+
+MobileNetV2_Transfer model eğitimi başlıyor...
+Epoch 1/20
+41/41 ━━━━━━━━━━━━━━━━━━━━ 79s 2s/step - accuracy: 0.4836 - loss: 0.8594 - precision: 0.4395 - recall: 0.8371 - val_accuracy: 0.5869 - val_loss: 0.6878 - val_precision: 0.4453 - val_recall: 0.6129 - learning_rate: 1.0000e-04
+Epoch 2/20
+41/41 ━━━━━━━━━━━━━━━━━━━━ 63s 2s/step - accuracy: 0.6155 - loss: 0.7136 - precision: 0.5490 - recall: 0.8424 - val_accuracy: 0.6062 - val_loss: 0.6611 - val_precision: 0.4634 - val_recall: 0.6129 - learning_rate: 1.0000e-04
+Epoch 3/20
+41/41 ━━━━━━━━━━━━━━━━━━━━ 65s 2s/step - accuracy: 0.5752 - loss: 0.7595 - precision: 0.4928 - recall: 0.7733 - val_accuracy: 0.6062 - val_loss: 0.6884 - val_precision: 0.4656 - val_recall: 0.6559 - learning_rate: 1.0000e-04
+Epoch 4/20
+41/41 ━━━━━━━━━━━━━━━━━━━━ 67s 2s/step - accuracy: 0.6377 - loss: 0.6869 - precision: 0.5293 - recall: 0.7958 - val_accuracy: 0.6718 - val_loss: 0.6138 - val_precision: 0.5645 - val_recall: 0.3763 - learning_rate: 1.0000e-04
+Epoch 5/20
+41/41 ━━━━━━━━━━━━━━━━━━━━ 84s 2s/step - accuracy: 0.6721 - loss: 0.6304 - precision: 0.6095 - recall: 0.7476 - val_accuracy: 0.6486 - val_loss: 0.6487 - val_precision: 0.5082 - val_recall: 0.6667 - learning_rate: 1.0000e-04
+Epoch 6/20
+41/41 ━━━━━━━━━━━━━━━━━━━━ 63s 2s/step - accuracy: 0.6675 - loss: 0.6230 - precision: 0.6010 - recall: 0.7457 - val_accuracy: 0.6371 - val_loss: 0.6668 - val_precision: 0.4959 - val_recall: 0.6559 - learning_rate: 1.0000e-04
+Epoch 7/20
+41/41 ━━━━━━━━━━━━━━━━━━━━ 69s 2s/step - accuracy: 0.6978 - loss: 0.6076 - precision: 0.6225 - recall: 0.7645 - val_accuracy: 0.5676 - val_loss: 0.7787 - val_precision: 0.4431 - val_recall: 0.7957 - learning_rate: 1.0000e-04
+Epoch 8/20
+41/41 ━━━━━━━━━━━━━━━━━━━━ 0s 1s/step - accuracy: 0.6688 - loss: 0.6477 - precision: 0.5773 - recall: 0.7087
+Epoch 8: ReduceLROnPlateau reducing learning rate to 4.999999873689376e-05.
+41/41 ━━━━━━━━━━━━━━━━━━━━ 64s 2s/step - accuracy: 0.6686 - loss: 0.6479 - precision: 0.5776 - recall: 0.7085 - val_accuracy: 0.6371 - val_loss: 0.6615 - val_precision: 0.4964 - val_recall: 0.7312 - learning_rate: 1.0000e-04
+Epoch 9/20
+41/41 ━━━━━━━━━━━━━━━━━━━━ 63s 2s/step - accuracy: 0.7155 - loss: 0.5789 - precision: 0.6210 - recall: 0.7818 - val_accuracy: 0.6293 - val_loss: 0.6746 - val_precision: 0.4892 - val_recall: 0.7312 - learning_rate: 5.0000e-05
+Epoch 10/20
+41/41 ━━━━━━━━━━━━━━━━━━━━ 63s 2s/step - accuracy: 0.7033 - loss: 0.5621 - precision: 0.6280 - recall: 0.7713 - val_accuracy: 0.6293 - val_loss: 0.7140 - val_precision: 0.4897 - val_recall: 0.7634 - learning_rate: 5.0000e-05
+Epoch 11/20
+41/41 ━━━━━━━━━━━━━━━━━━━━ 63s 2s/step - accuracy: 0.7102 - loss: 0.5547 - precision: 0.6766 - recall: 0.7297 - val_accuracy: 0.6332 - val_loss: 0.7309 - val_precision: 0.4932 - val_recall: 0.7849 - learning_rate: 5.0000e-05
+Epoch 11: early stopping
+Restoring model weights from the end of the best epoch: 4.
+
+Model değerlendiriliyor...
+Optimal threshold hesaplanıyor...
+17/17 ━━━━━━━━━━━━━━━━━━━━ 18s 1s/step
+Optimal threshold: 0.2620
+19/19 ━━━━━━━━━━━━━━━━━━━━ 9s 489ms/step
+
+Farklı threshold değerleri ile performans:
+Threshold	Accuracy	Precision	Recall	F1-Score
+------------------------------------------------------------
+0.300		0.5808		0.4863		0.7607		0.5933
+0.400		0.5979		0.5000		0.5726		0.5339
+0.500		0.6151		0.5263		0.4274		0.4717
+0.262		0.5636		0.4752		0.8205		0.6019
+0.600		0.6014		0.5094		0.2308		0.3176
+0.700		0.6014		0.5294		0.0769		0.1343
+
+En iyi threshold: 0.2620
+
+=== FINAL MODEL PERFORMANSI ===
+Accuracy:    0.5636
+Precision:   0.4752
+Recall:      0.8205
+F1-Score:    0.6019
+AUC:         0.6475
+Sensitivity: 0.8205
+Specificity: 0.3908
+
+=== CONFUSION MATRIX ===
+True Negatives (Benign correctly classified): 68
+False Positives (Benign misclassified as Malignant): 106
+False Negatives (Malignant misclassified as Benign): 21
+True Positives (Malignant correctly classified): 96
+
+=== CLASSIFICATION REPORT ===
+              precision    recall  f1-score   support
+
+      Benign       0.76      0.39      0.52       174
+   Malignant       0.48      0.82      0.60       117
+
+    accuracy                           0.56       291
+   macro avg       0.62      0.61      0.56       291
+weighted avg       0.65      0.56      0.55       291
+
+
+
+WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+Model kaydedildi: /content/Models/MobileNetV2_Transfer_mammogram_model.h5
+Sonuçlar kaydedildi: /content/Results/MobileNetV2_Transfer_results.pkl
+
+======================================================================
+                    FİNAL PROJE RAPORU
+          BME 519 - Computer-Aided Diagnosis
+======================================================================
+Model Türü: MobileNetV2_Transfer
+Görüntü Boyutu: (224, 224)
+Batch Boyutu: 16
+Toplam Epoch: 11
+Öğrenme Oranı: 0.0001
+En İyi Threshold: 0.2620
+
+=== SINIŞ DAĞILIMI VE AĞIRLIKLAR ===
+Sınıf Ağırlıkları: {0: 0.8722826086956522, 1: 1.1715328467153285}
+
+=== PERFORMANS METRİKLERİ ===
+Metrik          Değer      Açıklama
+--------------------------------------------------
+Accuracy        0.5636     Genel doğruluk oranı
+Precision       0.4752     Pozitif tahmin doğruluğu
+Recall          0.8205     Gerçek pozitifleri bulma
+F1-Score        0.6019     Precision-Recall dengesi
+AUC             0.6475     ROC eğrisi altında kalan alan
+Sensitivity     0.8205     Kanser tespiti oranı
+Specificity     0.3908     Sağlıklı tespit oranı
+
+=== KLİNİK DEĞERLENDIRME ===
+Medikal açıdan kritik metrikler:
+• Sensitivity (True Positive Rate): 0.8205
+  → Kanser vakalarının ne kadarını doğru tespit ettiğimiz
+  → Yüksek olması kritik (kanser kaçırılmamalı)
+• Specificity (True Negative Rate): 0.3908
+  → Sağlıklı vakaları doğru tespit etme oranı
+  → Gereksiz biopsi/tetkik oranını etkiler
+• Precision (Positive Predictive Value): 0.4752
+  → Kanser dediğimiz vakaların gerçekten kanser olma oranı
+
+=== MODEL PERFORMANS DEĞERLENDİRMESİ ===
+AUC Performansı: Zayıf (0.6475)
+Sensitivity Performansı: İyi (0.8205)
+
+=== ÖNERİLER VE İYİLEŞTİRME NOKTALARI ===
+• Sensitivity artırılmalı - daha fazla pozitif örnek veya farklı loss function
+• Specificity artırılmalı - false positive oranı yüksek
+• Precision artırılmalı - pozitif tahminlerin kalitesi düşük
+• F1-Score artırılmalı - precision-recall dengesi kurmalı
+
+=== GELECEK ÇALIŞMALAR ===
+• Daha fazla veri toplanabilir
+• Farklı augmentation teknikleri denenebilir
+• Ensemble yöntemleri kullanılabilir
+• Focal loss gibi imbalanced data için özel loss fonksiyonları
+• Cross-validation ile daha güvenilir değerlendirme
+• Grad-CAM ile model açıklanabilirliği
+======================================================================
+
+
+==================================================
+            MODEL PERFORMANS KARŞILAŞTIRMASI
+==================================================
+Model           Accuracy   Sensitivity  Specificity  AUC       
+-----------------------------------------------------------------
+Random Classifier 0.500      0.500        0.500        0.500     
+Simple CNN      0.750      0.700        0.800        0.750     
+ResNet-50       0.850      0.820        0.870        0.850     
+Our Model       0.564      0.821        0.391        0.648     
+
+
+==================================================
+              SON DOĞRULAMA KONTROLLERİ
+==================================================
+Test seti tahmin dağılımı:
+Min prediction: 0.0161
+Max prediction: 0.8495
+Mean prediction: 0.3870
+Std prediction: 0.2068
+
+Tahmin edilen sınıf dağılımı:
+Benign: 89 (30.6%)
+Malignant: 202 (69.4%)
+
+Gerçek sınıf dağılımı:
+Benign: 174 (59.8%)
+Malignant: 117 (40.2%)
+
+Model güvenilirlik analizi:
+Yüksek güvenilirlik tahminleri (>0.8 veya <0.2): 73/291 (25.1%)
+Model tahminlerinde düşük güven seviyesi - model belirsizliği yüksek
+
+Performans tutarlılık kontrolü:
+Precision-Recall dengesizliği var
+Sensitivity veya specificity düşük
+==================================================
+
+Analiz tamamlandı! Model başarıyla eğitildi ve değerlendirildi.
+En iyi threshold: 0.2620
+F1-Score: 0.6019
+AUC Score: 0.6475
+Model dosyası: /content/Models/MobileNetV2_Transfer_mammogram_model.h5
+Sonuçlar dosyası: /content/Results/MobileNetV2_Transfer_results.pkl
+
+Dosyaları indirmek için aşağıdaki komutları kullanın:
+files.download('/content/Models/MobileNetV2_Transfer_mammogram_model.h5')
+files.download('/content/Results/MobileNetV2_Transfer_results.pkl')
