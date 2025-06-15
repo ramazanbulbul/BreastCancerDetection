@@ -631,12 +631,12 @@ show_prediction_examples(model, test_generator, evaluation_results['best_thresho
 # 10. MODEL KAYDETME
 # ================================
 
-model_filename = f"/content/{model_name}_mammogram_model.h5"
+model_filename = f"/content/Models/{model_name}_mammogram_model.h5"
 model.save(model_filename)
 print(f"Model kaydedildi: {model_filename}")
 
 # Sonuçları kaydet
-results_filename = f"/content/{model_name}_results.pkl"
+results_filename = f"/content/Results/{model_name}_results.pkl"
 import pickle
 with open(results_filename, 'wb') as f:
     pickle.dump({
@@ -682,16 +682,16 @@ def generate_comprehensive_report(model_name, evaluation_results, class_weights)
     
     print(f"\n=== KLİNİK DEĞERLENDIRME ===")
     print("Medikal açıdan kritik metrikler:")
-    print(f"- Sensitivity (True Positive Rate): {metrics['sensitivity']:.4f}")
-    print("--> Kanser vakalarının ne kadarını doğru tespit ettiğimiz")
-    print("--> Yüksek olması kritik (kanser kaçırılmamalı)")
+    print(f"• Sensitivity (True Positive Rate): {metrics['sensitivity']:.4f}")
+    print("  → Kanser vakalarının ne kadarını doğru tespit ettiğimiz")
+    print("  → Yüksek olması kritik (kanser kaçırılmamalı)")
     
-    print(f"- Specificity (True Negative Rate): {metrics['specificity']:.4f}")
-    print("--> Sağlıklı vakaları doğru tespit etme oranı")
-    print("--> Gereksiz biopsi/tetkik oranını etkiler")
+    print(f"• Specificity (True Negative Rate): {metrics['specificity']:.4f}")
+    print("  → Sağlıklı vakaları doğru tespit etme oranı")
+    print("  → Gereksiz biopsi/tetkik oranını etkiler")
     
-    print(f"- Precision (Positive Predictive Value): {metrics['precision']:.4f}")
-    print("--> Kanser dediğimiz vakaların gerçekten kanser olma oranı")
+    print(f"• Precision (Positive Predictive Value): {metrics['precision']:.4f}")
+    print("  → Kanser dediğimiz vakaların gerçekten kanser olma oranı")
     
     print(f"\n=== MODEL PERFORMANS DEĞERLENDİRMESİ ===")
     
@@ -723,30 +723,30 @@ def generate_comprehensive_report(model_name, evaluation_results, class_weights)
     recommendations = []
     
     if metrics['sensitivity'] < 0.85:
-        recommendations.append("- Sensitivity artırılmalı - daha fazla pozitif örnek veya farklı loss function")
+        recommendations.append("• Sensitivity artırılmalı - daha fazla pozitif örnek veya farklı loss function")
     
     if metrics['specificity'] < 0.8:
-        recommendations.append("- Specificity artırılmalı - false positive oranı yüksek")
+        recommendations.append("• Specificity artırılmalı - false positive oranı yüksek")
     
     if metrics['precision'] < 0.7:
-        recommendations.append("- Precision artırılmalı - pozitif tahminlerin kalitesi düşük")
+        recommendations.append("• Precision artırılmalı - pozitif tahminlerin kalitesi düşük")
     
     if metrics['f1_score'] < 0.8:
-        recommendations.append("- F1-Score artırılmalı - precision-recall dengesi kurmalı")
+        recommendations.append("• F1-Score artırılmalı - precision-recall dengesi kurmalı")
     
     if len(recommendations) == 0:
-        recommendations.append("- Model performansı kabul edilebilir seviyede!")
+        recommendations.append("• Model performansı kabul edilebilir seviyede!")
     
     for rec in recommendations:
         print(rec)
     
     print(f"\n=== GELECEK ÇALIŞMALAR ===")
-    print("- Daha fazla veri toplanabilir")
-    print("- Farklı augmentation teknikleri denenebilir")
-    print("- Ensemble yöntemleri kullanılabilir")
-    print("- Focal loss gibi imbalanced data için özel loss fonksiyonları")
-    print("- Cross-validation ile daha güvenilir değerlendirme")
-    print("- Grad-CAM ile model açıklanabilirliği")
+    print("• Daha fazla veri toplanabilir")
+    print("• Farklı augmentation teknikleri denenebilir")
+    print("• Ensemble yöntemleri kullanılabilir")
+    print("• Focal loss gibi imbalanced data için özel loss fonksiyonları")
+    print("• Cross-validation ile daha güvenilir değerlendirme")
+    print("• Grad-CAM ile model açıklanabilirliği")
     
     print("="*70)
     
