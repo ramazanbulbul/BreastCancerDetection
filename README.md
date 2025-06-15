@@ -72,16 +72,16 @@ pip install pillow
 
 ```
 BreastCancerDetection/
-├── main.py                 # Ana training ve evaluation script'i
+├── main.py                # Ana training ve evaluation script'i
 ├── README.md              # Proje dokümantasyonu
-├── models/               # Kaydedilmiş modeller
+├── models/                # Kaydedilmiş modeller
 │   └── MobileNetV2_Transfer_mammogram_model.h5
-├── results/              # Sonuçlar ve grafikler
+├── results/               # Sonuçlar ve grafikler
 │   ├── training_history.png
 │   ├── confusion_matrix.png
 │   ├── roc_curve.png
 │   └── MobileNetV2_Transfer_results.pkl
-└── data/                 # Dataset dizini
+└── mammogram_dataset/     # Dataset dizini
     ├── train/
     │   ├── benign/
     │   └── malignant/
