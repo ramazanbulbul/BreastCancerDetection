@@ -203,15 +203,6 @@ Malignant    46       71
 
 Bu proje BME 519 ders kapsamında eğitim amaçlı geliştirilmiştir.
 
-## 📞 İletişim
-
-**Yazar**: Ramazan BÜLBÜL  
-**Email**: y240237016@ogr.ikcu.edu.tr  
-**Ders**: BME 519 - Bilgisayar Destekli Tanı  
-**Kurum**: İzmir Katip Çelebi Üniversitesi - Fen Bilimleri Enstitüsü  
-**Bölüm**: Yazılım Mühendisliği  
-**Öğretim Üyesi**: Dr. Özlem Karabiber Cura
-
 ---
 
 ## 🔍 Önemli Dosya Açıklamaları
